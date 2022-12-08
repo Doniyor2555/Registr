@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Verify</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <style>
+        .touchMeNot {
+            position: absolute;
+        }
+    </style>
+    </head>
+
+    <body>
+        <main>
+            <center>
+                <form action="#" name="verify">
+                    <div class="inpt" id="id">
+                        <input required="" class="i" type="text" name="name" id="name" placeholder="ㅤИмя"><br>
+                        <input required="" class="i" type="text" name="surname" id="surname" placeholder="ㅤФамилия"><br>
+                        <input required="" class="inp i" type="password" id="password" placeholder="ㅤПароль"><br>
+                        <button class="touchMeNot" id="save">Save</button>
+                    </div>
+                </form>
+            </center>
+        </main>
+
+        <script>
+            let btn = document.querySelector('button')
+            let inp = document.querySelector('.inp')
+            inp.onkeyup = () => {
+                if (inp.value.length > 8) {
+                    inp.classList.add('valid')
+                    btn.classList.remove('touchMeNot')
+                } else{
+                    inp.classList.add('invalid')
+                    submit()
+                }
+            }
+            function submit() {
+                var myFuncCalls = 0;
+                $('.touchMeNot').on('mouseenter', function (e) {
+                    var maxX = $(window).width() - $(this).width();
+                    var maxY = $(window).height() - $(this).height();
+                    $(this).css({
+                        'left': getRandomInt(0, maxX),
+                        'top': getRandomInt(0, maxY)
+                    });
+    
+                });
+                function getRandomInt(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+            }
+        </script>
+
+        <!-- <script src="script.js"></script> -->
+    </body>
+
+</html>
